@@ -1,4 +1,4 @@
-name := """play-rest-example"""
+name := """active-resource"""
 
 version := "1.0-SNAPSHOT"
 
@@ -12,3 +12,5 @@ libraryDependencies ++= Seq(
   cache,
   ws
 )
+
+libraryDependencies += "com.h2database" % "h2" % "1.4.179"

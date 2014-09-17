@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS employee;
+CREATE TABLE employee(ID LONG PRIMARY KEY, name CHAR);
