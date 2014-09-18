@@ -24,7 +24,7 @@ class EmployeeGetSpec extends Specification {
       val response = route(FakeRequest(GET, "/employee/2")).get
       status(response) must equalTo(OK)
       contentType(response) must beSome.which(_ == "application/json")
-      contentAsString(response) must contain ("""{"employee":{"id":2,"name":"tom"}}""")
+      contentAsString(response) must contain ("""{"Employee":{"id":2,"name":"tom"}}""")
     }
   }
 }

@@ -8,16 +8,7 @@ import play.api.libs.functional.syntax._
 
 
 object ActiveResourceController extends Controller {
-
-  implicit val employeeWrites = new Writes[Employee] {
-    def writes(employee: Employee) = Json.obj("id" -> employee.id, "name" -> employee.name)
-  }
-
   def get(id: Int) = Action {
-    val employee = Employee.find(id)
-    val map = Map("employee" -> employee)
-    //val map = Map("employee" -> new Employee(1,"bob"))
-    Ok(Json.toJson(map))
+    Ok(Employee.find(id).toJsValue())
   }
-
 }
