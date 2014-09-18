@@ -2,6 +2,6 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /employee/:id               controllers.ActiveResourceController.get(id: Int)
+GET     /Employee/:id               controllers.ActiveResourceController.get(id: Int)
 
 
