@@ -1,6 +1,6 @@
 package controllers
 
-import model.Employee
+import model.{Animal, Employee}
 import play.api._
 import play.api.mvc._
 import play.api.libs.json._
@@ -8,7 +8,12 @@ import play.api.libs.functional.syntax._
 
 
 object ActiveResourceController extends Controller {
-  def get(id: Int) = Action {
-    Ok(Employee.find(id).toJsValue())
+  def get(resource: String, id: Int) = Action {
+    resource match {
+      case "Employee" => Ok(new Employee(id).find().toJsValue())
+      case "Animal" => Ok(new Animal(id).find().toJsValue())
+      case _ => throw new IllegalArgumentException("Resource [" + resource + "] Not Found")
+    }
+
   }
 }

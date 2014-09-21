@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS Animal;
+CREATE TABLE Animal(ID INT PRIMARY KEY, name CHAR, legs_count　INT);
