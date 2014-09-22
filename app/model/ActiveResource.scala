@@ -13,5 +13,5 @@ import play.api.libs.json.{JsValue, Json, Writes}
 /**
  * Created by katsuki on 2014/09/20.
  */
-trait ActiveResource extends RepositoryResource with JsResource
+trait ActiveResource extends RepositoryResource[ActiveResource] with JsResource
 

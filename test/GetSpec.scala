@@ -36,7 +36,6 @@ class GetSpec extends Specification {
     }
   }
 
-
   "IDでのAnimalの取得" should {
     "そのIDのAnimalを返す" in new animalSetupApplication{
       val response = route(FakeRequest(GET, "/Animal/2")).get

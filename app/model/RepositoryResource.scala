@@ -12,13 +12,13 @@ import play.api.libs.json.{JsValue, Json, Writes}
 /**
  * Created by katsuki on 2014/09/20.
  */
-trait RepositoryResource {
+trait RepositoryResource[T <: RepositoryResource[T]] {
   lazy val con = DB.getConnection()
   def ResourceName:String
   def id:Int
-  def rowParser:RowParser[ActiveResource]
+  def rowParser:RowParser[T]
 
-  def find():ActiveResource = {
+  def find():T = {
     DB.withConnection { implicit c =>
       SQL("select * from " + ResourceName + " where id = {id}").on('id -> id).as(rowParser.single)
     }
