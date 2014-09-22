@@ -18,6 +18,15 @@ class GetSpec extends Specification {
     }
   }
 
+  "IDでのEmployeeの取得" should {
+    "そのIDのEmployeeを返す" in new employeeSetupApplication{
+      val response = route(FakeRequest(GET, "/Employee/2")).get
+      status(response) must equalTo(OK)
+      contentType(response) must beSome.which(_ == "application/json")
+      contentAsString(response) must contain ("""{"Employee":{"id":2,"name":"tom"}}""")
+    }
+  }
+
   trait animalSetupApplication extends WithApplication with Scope {
     DB.withConnection { implicit c =>
       SQL("delete from Animal").executeUpdate()
@@ -27,14 +36,6 @@ class GetSpec extends Specification {
     }
   }
 
-  "IDでのEmployeeの取得" should {
-    "そのIDのEmployeeを返す" in new employeeSetupApplication{
-      val response = route(FakeRequest(GET, "/Employee/2")).get
-      status(response) must equalTo(OK)
-      contentType(response) must beSome.which(_ == "application/json")
-      contentAsString(response) must contain ("""{"Employee":{"id":2,"name":"tom"}}""")
-    }
-  }
 
   "IDでのAnimalの取得" should {
     "そのIDのAnimalを返す" in new animalSetupApplication{
