@@ -9,7 +9,7 @@ import play.api.test._
 /**
  * Created by katsuki on 2014/09/21.
  */
-class ResourceTest extends Specification {
+class ActiveResourceTest extends Specification {
 
   "implicitParameterの学習テスト" should {
     "暗黙型パラメータを明示的に渡せる" in {

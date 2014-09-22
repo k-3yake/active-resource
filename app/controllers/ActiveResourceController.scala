@@ -14,6 +14,5 @@ object ActiveResourceController extends Controller {
       case "Animal" => Ok(new Animal(id).find().toJsValue())
       case _ => throw new IllegalArgumentException("Resource [" + resource + "] Not Found")
     }
-
   }
 }
