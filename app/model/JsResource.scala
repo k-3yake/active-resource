@@ -14,11 +14,11 @@ import play.api.libs.json.{JsValue, Json, Writes}
  */
 trait JsResource{
   def ResourceName:String
-  def jsField:Seq[Tuple2[String,JsValueWrapper]]
+  def jsFields:Seq[Tuple2[String,JsValueWrapper]]
 
   def toJsValue() = {
     implicit val writes = new Writes[JsResource] {
-      def writes(jr: JsResource) = Json.obj(jr.jsField: _*)
+      def writes(jr: JsResource) = Json.obj(jr.jsFields: _*)
     }
     Json.toJson(Map(ResourceName -> this))
   }

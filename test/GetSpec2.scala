@@ -5,13 +5,9 @@ import org.specs2.mutable._
 import org.specs2.specification.BeforeAfter
 import play.api.test.Helpers._
 import play.api.test._
-import org.specs2.mutable._
-import org.specs2.specification.{Scope, BeforeExample}
-import play.api.test.Helpers._
-import play.api.test._
 
 
-class GetSpec extends Specification {
+class GetSpec2 extends Specification {
 
   trait WithDbApp extends WithApplication with BeforeAfter {
     val setupFiles: Seq[String]
@@ -44,4 +40,5 @@ class GetSpec extends Specification {
       contentAsString(response) must contain ("""{"Animal":{"id":2,"name":"cat","legsCount":4}}""")
     }
   }
+
 }

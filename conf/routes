@@ -3,6 +3,7 @@
 # ~~~~
 
 GET     /:resource/:id               controllers.ActiveResourceController.get(resource:String, id: Int)
+PUT     /:resource/:params            controllers.ActiveResourceController.put(resource:String, params: String)
 
 
 

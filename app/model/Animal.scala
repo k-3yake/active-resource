@@ -15,7 +15,8 @@ class Animal(val id: Int,val name: String, val legsCount: Int) extends ActiveRes
 
   override def ResourceName: String = "Animal"
 
-  def jsField = Seq("id" -> id, "name" -> name, "legsCount" -> legsCount)
+  def jsFields = Seq("id" -> id, "name" -> name, "legsCount" -> legsCount)
+  def sqlFields = Seq("id" -> id, "name" -> name, "legsCount" -> legsCount)
 
   def rowParser = for {
     id <- int("id")

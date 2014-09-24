@@ -15,14 +15,20 @@ import play.api.libs.json.{JsObject, JsValue, Json, Writes}
  */
 
 class Employee(val id: Int,val name: String) extends ActiveResource {
+
   def this(id: Int) = this(id, "")
 
   def ResourceName = "Employee"
 
-  def jsField = Seq("id" -> id, "name" -> name)
+  def jsFields =  Seq("id" -> id, "name" -> name)
+
+  def sqlFields = Seq("id" -> id, "name" -> name)
+
 
   def rowParser = for {
     id <- int("id")
     name <- str("name")
   } yield new Employee(id,name)
+
+
 }

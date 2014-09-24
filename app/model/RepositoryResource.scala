@@ -23,4 +23,13 @@ trait RepositoryResource[T <: RepositoryResource[T]] {
       SQL("select * from " + ResourceName + " where id = {id}").on('id -> id).as(rowParser.single)
     }
   }
+
+  def sqlFields:Seq[NamedParameter]
+
+  def save(): Unit = {
+    DB.withConnection { implicit c =>
+      //SQL("insert into " + ResourceName + " (id,name) values ({id},{name})").on('id -> 1).on('name -> "bob").execute()
+      SQL("insert into " + ResourceName + " (id,name) values ({id},{name})").on(sqlFields: _*).execute()
+    }
+  }
 }
